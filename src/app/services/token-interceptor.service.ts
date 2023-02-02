@@ -24,7 +24,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err) => {
         if (err.status === 401) {
-          console.log('this.authService.logout();');
+          localStorage.removeItem('token')
         }
         const error = err.error.message || err.statusText;
         return throwError(error);

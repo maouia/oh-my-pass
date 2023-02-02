@@ -10,12 +10,12 @@ import {Router} from "@angular/router";
 })
 export class PasswordComponent implements OnInit {
 
+  constructor(private passwordService : PasswordService,private router:Router) {
+  }
 
   passords$ : any;
   id:any
   result :any = {};
-  constructor(private passwordService : PasswordService,private router:Router) {
-  }
 
   getAll(){
     this.passwordService.getAll().subscribe(data=>{
@@ -31,7 +31,7 @@ setid(idform:any){
     this.getAll();
     this.passwordService.Refrech.subscribe(responce=>{
       this.getAll();
-    })
+    });
   }
 
 
@@ -44,5 +44,10 @@ setid(idform:any){
 
   rest() {
     this.result = {};
+  }
+
+  delete(pass: any) {
+    console.log(typeof (pass))
+    this.passwordService.delete(pass).subscribe();
   }
 }
