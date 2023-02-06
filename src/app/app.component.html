@@ -1,42 +1,42 @@
 <div *ngIf="islogin()==false">
-<div>
-<app-headermobile></app-headermobile>
-<!--end::Header Mobile-->
-<div class="d-flex flex-column flex-root">
-  <!--begin::Page-->
-  <div class="d-flex flex-row flex-column-fluid page">
-    <!--begin::Aside-->
-    <app-aside></app-aside>
-    <!--end::Aside-->
-    <!--begin::Wrapper-->
-    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-      <!--begin::Header-->
-     <!-- <app-navbar></app-navbar> -->
-      <!--end::Header-->
-      <!--begin::Content-->
-      <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <!--begin::Subheader-->
-        <div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
-          <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-              <!--begin::Page Heading-->
-              <div class="d-flex align-items-baseline flex-wrap mr-5">
-                <!--begin::Page Title-->
-                <h5 class="text-dark font-weight-bold my-1 mr-5">Passwords</h5>
-                <!--end::Page Title-->
-              </div>
-              <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
-            <!--begin::Toolbar-->
-            <div class="d-flex align-items-center">
-              <!--begin::Actions-->
-              <a href="#" class="btn btn-light-primary font-weight-bolder btn-sm">Actions</a>
-              <!--end::Actions-->
-              <!--begin::Dropdown-->
-              <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
-                <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div>
+    <app-headermobile></app-headermobile>
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+      <!--begin::Page-->
+      <div class="d-flex flex-row flex-column-fluid page">
+        <!--begin::Aside-->
+        <app-aside></app-aside>
+        <!--end::Aside-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+          <!--begin::Header-->
+          <!-- <app-navbar></app-navbar> -->
+          <!--end::Header-->
+          <!--begin::Content-->
+          <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+              <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                  <!--begin::Page Heading-->
+                  <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Passwords</h5>
+                    <!--end::Page Title-->
+                  </div>
+                  <!--end::Page Heading-->
+                </div>
+                <!--end::Info-->
+                <!--begin::Toolbar-->
+                <div class="d-flex align-items-center">
+                  <!--begin::Actions-->
+                  <a data-toggle="modal" data-target="#add" class="btn btn-light-primary font-weight-bolder btn-sm">Add Password</a>
+                  <!--end::Actions-->
+                  <!--begin::Dropdown-->
+                  <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
+                    <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<span class="svg-icon svg-icon-success svg-icon-2x">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Files/File-plus.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -48,41 +48,73 @@
 												</svg>
                         <!--end::Svg Icon-->
 											</span>
-                </a>
+                    </a>
 
+                  </div>
+                  <!--end::Dropdown-->
+                </div>
+                <!--end::Toolbar-->
               </div>
-              <!--end::Dropdown-->
             </div>
-            <!--end::Toolbar-->
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+              <!--begin::Container-->
+              <div class="container-fluid d-flex flex-wrap">
+                <router-outlet></router-outlet>
+
+
+                <div class="modal fade" id="add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Password for Decryption</h5>
+                        <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div data-scroll="true" data-height="300">
+                          <form #add="ngForm" (ngSubmit)="onsubmit(add)"  >
+
+                            <input class="form-control mt-2 mb-2-" type="text" name="hname" placeholder="Host Name" ngModel   >
+                            <input class="form-control mt-2 mb-2-" type="password" name="password" placeholder="Password" ngModel   >
+
+                            <div>
+                            </div>
+                            <div class="modal-footer">
+                              <button  type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary font-weight-bold">Save</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Container-->
+            </div>
+            <!--end::Entry-->
           </div>
+          <!--end::Content-->
+          <!--begin::Footer-->
+          <!-- <app-footer></app-footer> -->
+          <!--end::Footer-->
         </div>
-        <!--end::Subheader-->
-        <!--begin::Entry-->
-        <div class="d-flex flex-column-fluid">
-          <!--begin::Container-->
-          <div class="container-fluid d-flex flex-wrap">
-            <router-outlet></router-outlet>
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::Entry-->
+        <!--end::Wrapper-->
       </div>
-      <!--end::Content-->
-      <!--begin::Footer-->
-     <!-- <app-footer></app-footer> -->
-      <!--end::Footer-->
+      <!--end::Page-->
     </div>
-    <!--end::Wrapper-->
+    <!--end::Main-->
+    <!-- begin::User Panel-->
+    <app-userpanel></app-userpanel>
+    <!-- end::User Panel-->
   </div>
-  <!--end::Page-->
+
 </div>
-<!--end::Main-->
-<!-- begin::User Panel-->
-<app-userpanel></app-userpanel>
-<!-- end::User Panel-->
-</div>
-</div>
+
 
 <div *ngIf="islogin()==true">
-  <app-login></app-login>
+<router-outlet></router-outlet>
 </div>

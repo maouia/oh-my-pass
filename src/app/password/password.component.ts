@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class PasswordComponent implements OnInit {
 
   constructor(private passwordService : PasswordService,private router:Router) {
+    this.getAll();
   }
 
   passords$ : any;
@@ -23,20 +24,18 @@ export class PasswordComponent implements OnInit {
     })
   }
 
-setid(idform:any){
-    this.id=idform;
-}
-
   ngOnInit(): void {
-    this.getAll();
-    this.passwordService.Refrech.subscribe(responce=>{
+    this.passwordService.Refrech.subscribe(res=>{
       this.getAll();
     });
   }
 
+    setid(idform:any){
+        this.id=idform;
+    }
 
    onsubmit(form: NgForm) {
-    this.passwordService.decode(form).subscribe(data=>{
+    this.passwordService.decode(form).subscribe((data)=>{
      this.result= data;
     })
 

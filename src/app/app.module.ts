@@ -14,6 +14,8 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptorService} from "./services/token-interceptor.service";
 import { PasswordComponent } from './password/password.component';
+import { MainComponent } from './main/main.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { PasswordComponent } from './password/password.component';
     LoginComponent,
     RegisterComponent,
     PasswordComponent,
+    MainComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,

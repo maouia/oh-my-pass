@@ -5,14 +5,14 @@ import {WithnouserService} from "./services/withnouser.service";
 import {WithuserService} from "./services/withuser.service";
 import {VeriftokenService} from "./services/veriftoken.service";
 import {PasswordComponent} from "./password/password.component";
-
+import {SignInComponent} from "./sign-in/sign-in.component";
 
 
 const routes: Routes = [
   {path:"",component:PasswordComponent,canActivate:[WithnouserService,VeriftokenService]},
   {path:"login",component:LoginComponent,canActivate:[WithuserService]},
+  {path:"sign-in",component:SignInComponent,canActivate:[WithuserService]},
   {path:"password",component:PasswordComponent,canActivate:[WithnouserService,VeriftokenService]},
-
 ];
 
 @NgModule({
