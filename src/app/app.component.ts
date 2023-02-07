@@ -21,9 +21,9 @@ export class AppComponent implements OnInit{
     return this.router.url === '/login' || this.router.url === '/sign-in' ;
   }
 
-  onsubmit(add: NgForm) {
+  async onsubmit(add: NgForm) {
     this.passwordService.create(add).subscribe();
-    this.passwordService.refreched$.next(true)
+    await this.passwordService.refreched$.next(true)
   }
 
   ngOnInit() {

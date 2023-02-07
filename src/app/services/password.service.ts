@@ -18,16 +18,16 @@ export class PasswordService {
   }
 
   decode(f:NgForm){
-    return this.http.post(`http://localhost:3000/password/get-pass`, f.value  ).pipe();
+    return this.http.post(`http://localhost:3000/password/get-pass`, f.value  );
   }
 
   delete(deletepass:any){
-    return this.http.delete(`http://localhost:3000/password/delete/${deletepass}`).pipe();
+    return this.http.delete(`http://localhost:3000/password/delete/${deletepass}`);
   }
 
 
   create(f:NgForm){
-    return this.http.post(`http://localhost:3000/password/create`, f.value  ).pipe();
+    return this.http.post(`http://localhost:3000/password/create`, f.value  );
   }
 
 

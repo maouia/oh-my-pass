@@ -15,15 +15,14 @@ export class PasswordComponent implements OnInit {
   constructor(private passwordService : PasswordService,private router:Router) {
   }
 
-  passords : any;
+  passords$ : any;
   id:any
   result :any = {};
 
 
 
-  ngOnInit(): void {
-
-    this.passords=this.passwordService.refreched$.pipe(switchMap(_=>this.passwordService.getAll()))
+   ngOnInit() {
+    this.passords$= this.passwordService.refreched$.pipe(switchMap(_=>this.passwordService.getAll()))
   }
 
     setid(idform:any){
@@ -40,8 +39,8 @@ export class PasswordComponent implements OnInit {
     this.result = {};
   }
 
-  delete(pass: any) {
+  async delete(pass: any) {
     this.passwordService.delete(pass).subscribe();
-    this.passwordService.refreched$.next(true)
+   await this.passwordService.refreched$.next(true)
   }
 }
