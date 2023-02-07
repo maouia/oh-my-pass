@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import {BehaviorSubject, Observable, Subject, tap} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
 
@@ -10,8 +10,10 @@ export class PasswordService {
 
   constructor(private http : HttpClient) { }
 
+  public refreched$ = new BehaviorSubject<boolean>(true);
 
-  getAll():Observable<object>{
+
+  getAll():Observable<any>{
     return this.http.get("http://localhost:3000/password/get-all");
   }
 
@@ -20,25 +22,14 @@ export class PasswordService {
   }
 
   delete(deletepass:any){
-    return this.http.delete(`http://localhost:3000/password/delete/${deletepass}`).pipe(
-      tap(()=>{
-        this.Refrech.next();
-      })
-    )
+    return this.http.delete(`http://localhost:3000/password/delete/${deletepass}`).pipe();
   }
 
 
   create(f:NgForm){
-    return this.http.post(`http://localhost:3000/password/create`, f.value  ).pipe(
-      tap(()=>{
-        this.Refrech.next();
-      })
-    )
+    return this.http.post(`http://localhost:3000/password/create`, f.value  ).pipe();
   }
 
 
-  private _refrech = new Subject<void>();
-  get Refrech(){
-    return this._refrech;
-  }
+
 }

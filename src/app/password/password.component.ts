@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PasswordService} from "../services/password.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import { switchMap} from "rxjs/operators";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-password',
@@ -11,23 +13,17 @@ import {Router} from "@angular/router";
 export class PasswordComponent implements OnInit {
 
   constructor(private passwordService : PasswordService,private router:Router) {
-    this.getAll();
   }
 
-  passords$ : any;
+  passords : any;
   id:any
   result :any = {};
 
-  getAll(){
-    this.passwordService.getAll().subscribe(data=>{
-      this.passords$=data;
-    })
-  }
+
 
   ngOnInit(): void {
-    this.passwordService.Refrech.subscribe(res=>{
-      this.getAll();
-    });
+
+    this.passords=this.passwordService.refreched$.pipe(switchMap(_=>this.passwordService.getAll()))
   }
 
     setid(idform:any){
@@ -38,7 +34,6 @@ export class PasswordComponent implements OnInit {
     this.passwordService.decode(form).subscribe((data)=>{
      this.result= data;
     })
-
   }
 
   rest() {
@@ -46,7 +41,7 @@ export class PasswordComponent implements OnInit {
   }
 
   delete(pass: any) {
-    console.log(typeof (pass))
     this.passwordService.delete(pass).subscribe();
+    this.passwordService.refreched$.next(true)
   }
 }

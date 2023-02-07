@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class UserService {
     return this.http.post('http://localhost:3000/user/verif-token',{ headers : this.header });
   }
 
-  getUser(){
+  getUser():Observable<any>{
     return this.http.get('http://localhost:3000/user/user-details',{ headers : this.header });
   }
 

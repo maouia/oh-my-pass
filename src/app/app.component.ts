@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
 
   onsubmit(add: NgForm) {
     this.passwordService.create(add).subscribe();
+    this.passwordService.refreched$.next(true)
   }
 
   ngOnInit() {
