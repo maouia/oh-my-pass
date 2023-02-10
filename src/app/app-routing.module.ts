@@ -6,6 +6,7 @@ import {WithuserService} from "./services/withuser.service";
 import {VeriftokenService} from "./services/veriftoken.service";
 import {PasswordComponent} from "./password/password.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
+import {UpdatePasswordComponent} from "./update-password/update-password.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent,canActivate:[WithuserService]},
   {path:"sign-in",component:SignInComponent,canActivate:[WithuserService]},
   {path:"password",component:PasswordComponent,canActivate:[WithnouserService,VeriftokenService]},
+  {path:"update/:id",component:UpdatePasswordComponent,canActivate:[WithnouserService,VeriftokenService]},
 ];
 
 @NgModule({

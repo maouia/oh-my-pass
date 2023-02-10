@@ -18,7 +18,11 @@ export class AppComponent implements OnInit{
 
 
   public islogin(){
-    return this.router.url === '/login' || this.router.url === '/sign-in' ;
+    if (localStorage.getItem('token')) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   async onsubmit(add: NgForm) {

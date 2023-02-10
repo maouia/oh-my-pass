@@ -8,11 +8,11 @@ import {UserService} from "../services/user.service";
 })
 export class UserpanelComponent {
 
-   user : any;
+   user$ : any;
 
   constructor(private userService : UserService) {
     userService.getUser().subscribe(data=>{
-      this.user=data;
+      this.user$=data;
     })
   }
 
