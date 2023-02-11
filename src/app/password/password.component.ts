@@ -3,6 +3,8 @@ import {PasswordService} from "../services/password.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import { switchMap} from "rxjs/operators";
+import {ToastrService} from "ngx-toastr";
+import {ToastmessagesService} from "../services/toastmessages.service";
 
 @Component({
   selector: 'app-password',
@@ -11,7 +13,7 @@ import { switchMap} from "rxjs/operators";
 })
 export class PasswordComponent implements OnInit {
 
-  constructor(private passwordService : PasswordService,private router:Router) {
+  constructor(private passwordService : PasswordService,private router:Router, private toastMessage : ToastmessagesService) {
   }
 
   passords : any;
@@ -42,5 +44,6 @@ export class PasswordComponent implements OnInit {
    async delete(pass: string) {
       this.passwordService.delete(pass).subscribe();
       await this.passwordService.refreched$.next(true)
+     this.toastMessage.showDelete("The Password has been deleted");
   }
 }

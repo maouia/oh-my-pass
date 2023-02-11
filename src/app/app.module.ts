@@ -16,6 +16,8 @@ import {TokenInterceptorService} from "./services/token-interceptor.service";
 import { PasswordComponent } from './password/password.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -31,12 +33,15 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     PasswordComponent,
     SignInComponent,
     UpdatePasswordComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
     {

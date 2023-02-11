@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {PasswordService} from "./services/password.service";
+import {ToastmessagesService} from "./services/toastmessages.service";
 
 
 
@@ -13,7 +14,7 @@ import {PasswordService} from "./services/password.service";
 })
 export class AppComponent implements OnInit{
   title = 'oh-my-pass';
-  constructor(private router:Router , private passwordService : PasswordService) {
+  constructor(private router:Router , private passwordService : PasswordService, private toastMessage : ToastmessagesService) {
   }
 
 
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit{
   async onsubmit(add: NgForm) {
     this.passwordService.create(add).subscribe();
     await this.passwordService.refreched$.next(true)
+    this.toastMessage.showAdd("New Password Created");
   }
 
   ngOnInit() {
